@@ -3,7 +3,7 @@
 use EasySwoole\Log\LoggerInterface;
 
 return [
-    'SERVER_NAME' => "EasySwoole",
+    'SERVER_NAME' => "OrderServer",
     'MAIN_SERVER' => [
         'LISTEN_ADDRESS' => '0.0.0.0',
         'PORT' => 9501,
@@ -16,10 +16,11 @@ return [
             'max_wait_time' => 3
         ],
         'TASK' => [
-            'workerNum' => 4,
+            'workerNum' => 10,
             'maxRunningNum' => 128,
             'timeout' => 15
-        ]
+        ],
+        "open_mqtt_protocol"=>true,
     ],
     "LOG" => [
         'dir' => null,
@@ -29,5 +30,47 @@ return [
         'displayConsole' => true,
         'ignoreCategory' => []
     ],
-    'TEMP_DIR' => null
+    'TEMP_DIR' => null,
+    'LOG_DIR'  => null,
+    'MYSQL' => [
+        'host'          => "192.168.21.99",
+        'port'          => 3306,
+        'user'          => 'root',
+        'timeout'       => 5,
+        'charset'       => 'utf8mb4',
+        'password'      => 'iServer123',
+        'database'      => 'crmeb',
+        'maxObjectNum'  => 20,
+        'minObjectNum'  => 5,
+        'getObjectTimeout'  => 3.0,
+    ],
+    'MYSQL_read' => [
+        'host'          => '127.0.0.1',
+        'port'          => 3306,
+        'user'          => 'easyswoole',
+        'timeout'       => 5,
+        'charset'       => 'utf8mb4',
+        'password'      => 'easyswoole100%',
+        'database'      => 'easyswoole',
+        'maxObjectNum'  => 20,
+        'minObjectNum'  => 5,
+        'getObjectTimeout'  => 3.0,
+    ],
+    'MYSQL_write' => [
+        'host'          => '127.0.0.1',
+        'port'          => 3306,
+        'user'          => 'easyswoole',
+        'timeout'       => 5,
+        'charset'       => 'utf8mb4',
+        'password'      => 'easyswoole100%',
+        'database'      => 'easyswoole',
+        'maxObjectNum'  => 20,
+        'minObjectNum'  => 5,
+        'getObjectTimeout'  => 3.0,
+    ],
+    'REDIS'=>[
+        'host'      => '127.0.0.1',
+        'port'      => '6379',
+        'serialize' => \EasySwoole\Redis\Config\RedisConfig::SERIALIZE_NONE
+    ]
 ];
